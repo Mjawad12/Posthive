@@ -21,8 +21,8 @@ export default function Blog() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    blog(blogId);
-  }, [blogId, blog]);
+    blog(blogId); // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (blogContent !== null) {
