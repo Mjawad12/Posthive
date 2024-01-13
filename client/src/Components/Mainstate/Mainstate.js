@@ -211,6 +211,8 @@ export default function Mainstate(props) {
 
   const blog = async (id) => {
     const func = async () => {
+      setCblog(null);
+      setblogContent(null);
       const data = await fetch(`${url}/posts/getBlog/${id}`, {
         method: "Get",
         headers: {
@@ -540,8 +542,6 @@ export default function Mainstate(props) {
     } // eslint-disable-next-line
   }, []);
   useEffect(() => {
-    setCblog(null);
-    setblogContent(null);
     const mancode = document.querySelector(".blogCode");
     if (mancode) {
       mancode.innerHTML = "";
