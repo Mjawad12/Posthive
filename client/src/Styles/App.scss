@@ -1,0 +1,1976 @@
+@import "./_Andybell_Reset";
+
+//  Font Face
+
+@font-face {
+  font-family: "Sohne";
+  src: url("./Fonts/Sohne-Leicht.woff") format("woff2"),
+    url("./Fonts/Sohne-Leicht.woff2") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sohne";
+  src: url("./Fonts/Sohne-Buch.woff") format("woff2"),
+    url("./Fonts/Sohne-Buch.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("./Fonts/Sohne-Kraftig.woff2") format("woff2"),
+    url("./Fonts/Sohne-Kraftig.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("./Fonts/Sohne-Dreiviertelfett.woff2") format("woff2"),
+    url("./Fonts/Sohne-Dreiviertelfett.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Variables
+$ff-p: "Sohne", sans-serif;
+$ff-s: "Source Serif 4", serif;
+
+$heading-size: 2rem;
+$para-size: 1rem;
+
+$clr-off: #f9f9f9;
+$dul-color: rgb(107, 107, 107);
+$back-C: rgba(209, 209, 209, 0.518);
+$Y-clr: #ffc017;
+$B-b: #eeeeee;
+
+//  Custom Functions
+@mixin flex($dir, $js, $al) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $js;
+  align-items: $al;
+}
+@mixin container() {
+  max-width: 1170px;
+  margin: auto;
+  width: 100%;
+}
+.f-btn {
+  font-family: $ff-p;
+  font-size: 0.85rem;
+  background-color: transparent;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 1rem;
+  padding: 0.2rem 0.7rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+.btn-2 {
+  background-color: black;
+  color: white;
+  max-width: 9rem;
+  width: 100%;
+  padding: 0.6rem 0;
+  border-radius: 2rem;
+}
+.btn-3 {
+  background-color: rgb(0, 156, 0);
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 0.35rem 1rem;
+  &:hover {
+    background-color: green;
+  }
+  @media (max-width: 40em) {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.95rem;
+  }
+}
+
+.userDeatils {
+  @include flex(row, flex-start, center);
+  width: 100%;
+  gap: 0.2rem;
+  p {
+    font-family: $ff-p;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: black;
+  }
+  span {
+    font-family: $ff-p;
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+  img {
+    border-radius: 100vw;
+  }
+}
+.btmstyle {
+  position: relative;
+  color: black !important;
+  &::before {
+    content: attr(div);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border: 1px solid black;
+  }
+}
+.no-scroll {
+  overflow: hidden;
+}
+.up-animate-in {
+  transition: 0.3s all ease-in-out;
+  transform: translateY(60%);
+  scale: 0;
+}
+.up-animate-out {
+  transform: translateY(0);
+  scale: 1;
+}
+.error {
+  font-family: $ff-p;
+  font-size: 0.8rem;
+  color: rgb(215, 0, 0);
+  text-align: center;
+}
+font[size="5"] {
+  font-size: 5rem;
+}
+font[size="4"] {
+  font-size: 1.5rem;
+}
+.atag {
+  display: inline;
+  text-decoration: underline;
+  position: relative;
+  &:hover {
+    .aRtag {
+      display: block;
+    }
+  }
+}
+.aRtag {
+  position: absolute;
+  bottom: -1.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.85rem;
+  background-color: black;
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: 0.3rem;
+  width: max-content;
+  display: none;
+  transition: 1s all ease;
+  z-index: 99;
+  line-height: 25px;
+  &:hover {
+    display: block;
+  }
+}
+.display-none {
+  display: none !important;
+}
+.transform-0 {
+  transform: translateX(0) !important;
+}
+.Imgfocused {
+  border: 1px solid green;
+}
+.close-btn {
+  position: absolute;
+  z-index: 99999;
+  right: 0;
+  top: 0;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+iframe {
+  max-width: 100%;
+}
+svg {
+  cursor: pointer;
+}
+.transform-right-in {
+  transition: 0.5s all ease;
+  transform: translateX(100%);
+}
+.transform-right-out {
+  transform: translateX(0);
+}
+.blogHr {
+  border: 1px solid #eeeeee;
+  width: 100%;
+  margin: 0;
+}
+.nameDateLink {
+  @include flex(row, flex-start, center);
+  gap: 0.6rem;
+}
+.blogLink {
+  width: 100%;
+}
+.loadingMain {
+  @include flex(column, center, center);
+  width: 100%;
+  div {
+    max-width: 6rem;
+    min-height: 6rem;
+    width: 100%;
+    border: 8px solid black;
+    border-top: 10px solid white;
+    border-radius: 100vw;
+    animation: spin 1s ease infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+.save {
+  @include flex(row, space-between, center);
+  max-width: 15rem;
+  width: 100%;
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+.linkto {
+  @include flex(row, center, flex-start);
+  gap: 1rem;
+}
+.opcaity-0 {
+  opacity: 0;
+}
+
+text {
+  font-family: $ff-p;
+  font-size: 1.1rem;
+}
+.Sh {
+  font-family: $ff-p;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.384);
+  span {
+    color: black;
+    font-weight: 600;
+  }
+  @media (max-width: 40em) {
+    font-size: 2rem;
+  }
+}
+.sRM {
+  display: none !important;
+  @media (max-width: 35em) {
+    display: flex !important;
+    z-index: 999;
+    position: absolute;
+    left: 2rem;
+    top: 2.5rem;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.315);
+  }
+}
+
+//  Navbar
+.Navbar {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid $B-b;
+  .mainNav {
+    @include flex(row, space-between, center);
+    .NavuserImg {
+      pointer-events: none;
+    }
+    .leftSec {
+      @include flex(row, flex-start, center);
+      gap: 1rem;
+      position: relative;
+      @media (max-width: 30em) {
+        width: 100%;
+        justify-content: space-between;
+        padding-right: 1rem;
+      }
+      .search {
+        @include flex(row, center, center);
+        gap: 0.5rem;
+        background-color: $clr-off;
+        padding: 0.5rem 0.7rem;
+        border-radius: 2rem;
+        input {
+          border: none;
+          outline: none;
+          font-family: $ff-s;
+          background-color: $clr-off;
+        }
+      }
+      @media (max-width: 35em) {
+        .sr_n > input {
+          display: none;
+        }
+      }
+      .logo {
+        width: 4rem;
+      }
+    }
+    .rightSec {
+      @include flex(row, space-between, center);
+      gap: 1.7rem;
+      .userImg {
+        position: relative;
+        cursor: pointer;
+        width: 2.2rem;
+        height: 2.2rem;
+        img {
+          width: 2.2rem;
+          height: 2.2rem;
+          border-radius: 100vw;
+          cursor: pointer;
+          border: 1px solid #eeeeee;
+          background-color: $clr-off;
+        }
+        &:hover {
+          &::after {
+            border-radius: 100vw;
+            content: attr(div);
+            inset: 0;
+            background-color: #0000001c;
+            position: absolute;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      svg {
+        cursor: pointer;
+      }
+      .WriteDiv {
+        @include flex(row, center, center);
+        color: #6b6b6b;
+        cursor: pointer;
+        gap: 0.3rem;
+        font-family: $ff-s;
+        &:hover {
+          color: #4b4848;
+        }
+      }
+    }
+  }
+}
+.noANavbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background-color: $Y-clr;
+  border-bottom: 1px solid black;
+  padding: 0rem 0.5rem;
+  transition: 0.8s all ease-in-out;
+  & > div {
+    @include container();
+    @include flex(row, space-between, center);
+    .NMright {
+      ul {
+        @include flex(row, space-between, center);
+        gap: 2rem;
+        font-size: 0.9rem;
+        font-family: $ff-p;
+        font-weight: 400;
+        li {
+          cursor: pointer;
+        }
+        .btn-2 {
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+        }
+      }
+    }
+    @media (max-width: 30em) {
+      li:not(:nth-child(3)) {
+        display: none;
+      }
+    }
+  }
+}
+
+// hero
+.hero {
+  @include flex(row, flex-start, flex-start);
+  @include container();
+  gap: 5rem;
+  padding: 0 0.3rem;
+  position: relative;
+  .leftSec {
+    @include flex(column, flex-start, flex-start);
+    gap: 3rem;
+    padding: 1.8rem 1rem;
+    flex-grow: 8.5;
+    flex-basis: 0;
+    @media (max-width: 50em) {
+      gap: 2rem;
+    }
+    @media (max-width: 40em) {
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+  }
+  .rightSec {
+    @include flex(column, flex-start, flex-start);
+    position: sticky;
+    top: -249px;
+    transition: 0.5s all ease;
+    gap: 2rem;
+    padding: 2.5rem;
+    flex-grow: 3.5;
+    flex-basis: 0;
+    border-left: 1px solid #eeeeee;
+    min-height: 100vh;
+    @media (max-width: 60em) {
+      display: none;
+    }
+    .Recomendations {
+      @include flex(column, flex-start, flex-start);
+      gap: 1.2rem;
+      width: 100%;
+      .RecomInter {
+        width: 100%;
+      }
+      h2 {
+        font-family: $ff-p;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+        font-weight: 700;
+      }
+      img {
+        width: 1.15rem;
+        height: 1.15rem;
+      }
+    }
+    h4 {
+      font-family: $ff-p;
+      font-size: 1rem;
+      font-weight: 500;
+      width: 100%;
+    }
+    .rTopics {
+      width: 100%;
+      .topicsDiv {
+        @include flex(row, flex-start, center);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 1rem;
+        span {
+          background-color: #f2f2f2;
+          font-family: $ff-p;
+          font-size: 0.85rem;
+          font-weight: 400;
+          padding: 0.4rem 1.2rem;
+          border-radius: 20px;
+          text-align: center;
+          width: max-content;
+        }
+      }
+    }
+
+    .RF {
+      width: 100%;
+      .RfDiv {
+        @include flex(column, flex-start, flex-start);
+        width: 100%;
+        .Pvf {
+          @include flex(row, flex-start, flex-start);
+          gap: 1rem;
+          padding-block: 1rem 0;
+          img {
+            border-radius: 100vw;
+            margin-top: 0.2rem;
+          }
+          h3 {
+            font-family: $ff-p;
+            font-weight: 700;
+            font-size: 1rem;
+          }
+          p {
+            font-family: $ff-p;
+            font-size: 0.8rem;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+    .Rdl {
+      p.noRdl {
+        font-family: $ff-p;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+.NAhero {
+  background-color: $Y-clr;
+  padding: 0rem 1rem;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  & > div {
+    @include container();
+    @include flex(row, space-between, center);
+    min-height: 80vh;
+
+    div {
+      width: 100%;
+    }
+    .rightNA {
+      flex-grow: 0.3;
+      flex-basis: 0;
+      svg {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      @media (max-width: 60em) {
+        svg {
+          right: -3rem;
+        }
+      }
+      @media (max-width: 50em) {
+        svg {
+          right: -5rem;
+        }
+      }
+      @media (max-width: 48em) {
+        display: none;
+      }
+    }
+    .leftNA {
+      @include flex(column, flex-start, flex-start);
+      flex-grow: 0.7;
+      flex-basis: 0;
+      gap: 2rem;
+      font-family: $ff-s;
+      h1 {
+        font-size: 6.2rem;
+        font-weight: 900;
+        line-height: 5.5rem;
+      }
+      p {
+        font-family: $ff-p;
+        font-size: 1.5rem;
+        line-height: 1.7rem;
+        max-width: 30ch;
+        font-weight: 400;
+      }
+      .btn-2 {
+        font-family: $ff-p;
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+        max-width: 15rem;
+        cursor: pointer;
+      }
+      @media (max-width: 60em) {
+        h1 {
+          font-size: 5.5rem;
+        }
+      }
+      @media (max-width: 50em) {
+        h1 {
+          font-size: 5.5rem;
+        }
+      }
+      @media (max-width: 48em) {
+        width: 100%;
+        flex-grow: 1;
+        flex-basis: 0;
+        h1 {
+          font-size: 5.5rem;
+        }
+      }
+      @media (max-width: 40em) {
+        h1 {
+          font-size: 5rem;
+        }
+      }
+      @media (max-width: 30em) {
+        h1 {
+          font-size: 4rem;
+          line-height: 4rem;
+        }
+        p {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+.STop {
+  @include flex(row, flex-start, center);
+  width: 100%;
+  gap: 1.5rem;
+  font-family: $ff-p;
+  font-size: 0.9rem;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.099);
+  position: sticky;
+  top: -1px;
+  background-color: white;
+  p {
+    padding: 1rem 0;
+    cursor: pointer;
+    color: $dul-color;
+    &:hover {
+      color: black;
+      position: relative;
+      &::before {
+        content: attr(div);
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        border: 1px solid rgba(0, 0, 0, 0.322);
+      }
+    }
+  }
+
+  @media (max-width: 35em) {
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 30em) {
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+.blogInterLink {
+  width: 100%;
+}
+.BlogsInter {
+  @include flex(column, flex-start, flex-start);
+  gap: 1rem;
+  width: 100%;
+
+  .blogInter {
+    @include flex(column, flex-start, center);
+    gap: 0.7rem;
+    width: 100%;
+    .blogInterMain {
+      @include flex(row, space-between, center);
+      gap: 5rem;
+      width: 100%;
+
+      @media (max-width: 40em) {
+        gap: 3rem;
+      }
+
+      .leftBlogDetails {
+        @include flex(column, flex-start, flex-start);
+        flex-grow: 1;
+        flex-basis: 0;
+        gap: 0.3rem;
+        h2 {
+          font-family: $ff-p;
+          font-weight: 700;
+          font-size: 1.25rem;
+          width: 100%;
+          word-break: break-word;
+          line-height: 24px;
+        }
+        p {
+          font-family: $ff-s;
+          font-size: 0.9rem;
+          width: 100%;
+          word-break: break-word;
+        }
+        @media (max-width: 35em) {
+          gap: 0rem;
+          h2 {
+            font-size: 1rem;
+          }
+          p {
+            display: none;
+          }
+        }
+
+        .genresDiv {
+          @include flex(row, flex-start, center);
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        .blogDetails {
+          @include flex(row, space-between, center);
+          width: 100%;
+          margin-top: 1rem;
+          span {
+            font-family: $ff-p;
+            font-size: 0.8rem;
+            background-color: $clr-off;
+            padding: 0.3rem 1rem;
+            border-radius: 1rem;
+          }
+          @media (max-width: 40em) {
+            span:not(:nth-child(1)) {
+              display: none;
+            }
+          }
+          .btns {
+            @include flex(row, center, center);
+          }
+          svg {
+            cursor: pointer;
+            width: 1.7rem;
+            height: 1.7rem;
+            margin-left: 1.2rem;
+            &:hover {
+              stroke: black;
+              stroke-width: 0.4px;
+              &:nth-child(2) path {
+                stroke-width: 1.2px;
+                stroke: black;
+              }
+            }
+          }
+        }
+      }
+      .blogImg {
+        max-width: 8rem;
+        width: 100%;
+        @media (max-width: 32em) {
+          max-width: 5rem;
+          height: 5rem;
+          img {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+//  sign in pages
+
+.UacMain {
+  @include flex(column, center, center);
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0.5rem 0.7rem;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+  transition: 1s all ease;
+  .Uac {
+    @include flex(column, center, center);
+    gap: 6rem;
+    max-width: 42rem;
+    min-height: 42rem;
+    width: 100%;
+    margin: auto;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.252);
+    border-radius: 0.5rem;
+    position: relative;
+    .cr-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: 0.5rem;
+      cursor: pointer;
+      &:hover {
+        fill: black;
+      }
+    }
+    h1 {
+      font-family: $ff-s;
+      font-weight: 500;
+    }
+    .middleAuth {
+      @include flex(column, center, center);
+      gap: 2.6rem;
+      width: 100%;
+      p {
+        font-family: $ff-p;
+        font-size: 0.9rem;
+        font-weight: 500;
+        span {
+          color: rgb(48, 141, 48);
+          font-weight: 700;
+          font-size: 1rem;
+          cursor: pointer;
+          &:hover {
+            color: green;
+          }
+        }
+      }
+      .autnBtns {
+        @include flex(column, center, center);
+        width: 100%;
+        gap: 0.5rem;
+        .signbtn {
+          @include flex(row, flex-start, center);
+          max-width: 19rem;
+          width: 100%;
+          border: 1px solid black;
+          padding: 0.6rem 0.3rem;
+          border-radius: 2rem;
+          cursor: pointer;
+          P {
+            align-self: center;
+            width: 100%;
+            text-align: center;
+            font-family: $ff-p;
+            font-size: 1rem;
+            font-weight: 400;
+          }
+          svg {
+            align-self: flex-start;
+            position: absolute;
+          }
+        }
+      }
+    }
+    .bottomAuth {
+      max-width: 55ch;
+      p {
+        font-family: $ff-p;
+        font-size: 0.75rem;
+        color: rgba(0, 0, 0, 0.599);
+        text-align: center;
+      }
+    }
+    .EmailmiddleAuth {
+      @include flex(column, center, center);
+      max-width: 20rem;
+      width: 100%;
+      gap: 2rem;
+      div {
+        @include flex(column, center, center);
+        width: 100%;
+        span {
+          font-family: $ff-p;
+          font-size: 0.8rem;
+          color: rgba(0, 0, 0, 0.703);
+        }
+        P {
+          font-family: $ff-p;
+          font-size: 0.8rem;
+          color: rgb(215, 0, 0);
+          text-align: center;
+        }
+        input {
+          border: none;
+          border-bottom: 1px solid black;
+          outline: none;
+          width: 100%;
+          text-align: center;
+          font-family: $ff-s;
+          font-size: 1rem;
+        }
+      }
+    }
+    .otheropts {
+      font-family: $ff-p;
+      font-size: 0.9rem;
+      color: rgb(48, 141, 48) !important;
+      font-weight: 700;
+      cursor: pointer;
+      &:hover {
+        color: green;
+      }
+    }
+  }
+}
+//  Write page
+
+.writeDiv {
+  @include flex(column, flex-start, center);
+  max-width: 770px;
+  width: 100%;
+  margin: auto;
+  padding: 0rem 0.5rem 2rem;
+  gap: 0.5rem;
+  .titleDiv {
+    @include flex(row, flex-start, flex-start);
+    width: 100%;
+    span {
+      color: rgba(0, 0, 0, 0.516);
+      position: absolute;
+      pointer-events: none;
+      font-family: $ff-s;
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+    }
+  }
+  .storyDiv {
+    @include flex(column, flex-start, center);
+    width: 100%;
+    gap: 2rem;
+    position: relative;
+    span {
+      color: rgba(0, 0, 0, 0.516);
+      position: absolute;
+      pointer-events: none;
+      font-family: $ff-s;
+      font-size: 1.5rem;
+      left: 0;
+    }
+  }
+  .title {
+    font-size: 3.5rem;
+    font-family: $ff-s;
+    width: 100%;
+    border: none;
+    outline: none;
+    line-height: 3.5rem;
+    position: relative;
+    cursor: text;
+  }
+  .story {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: $ff-s;
+    font-size: 1.5rem;
+    position: relative;
+    cursor: text;
+    border-block: 1px solid rgba(0, 0, 0, 0.304);
+  }
+  .textEM {
+    @include flex(row, space-between, center);
+    padding: 0.5rem 0.5rem;
+    max-width: 15rem;
+    width: 100%;
+    border-radius: 0.4rem;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    background-color: black;
+    color: white;
+    gap: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    hr {
+      height: 20px;
+      padding: 0;
+      margin: 0;
+    }
+    div {
+      @include flex(row, space-between, center);
+
+      svg {
+        cursor: pointer;
+      }
+      button {
+        @include flex(row, center, center);
+        background-color: transparent;
+        border: none;
+        outline: none;
+      }
+    }
+    .linkdiv {
+      input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+      }
+    }
+  }
+  .adder-btnDiv {
+    @include flex(row, flex-start, flex-start);
+    position: fixed;
+    right: 0;
+    padding: 1rem 0.5rem;
+    width: max-content;
+    z-index: 99;
+    gap: 0.5rem;
+    .adder-btn {
+      @include flex(column, center, center);
+      gap: 0.5rem;
+      overflow: hidden;
+      padding: 0 0.2rem;
+
+      div.opner {
+        border: 1px solid black;
+        cursor: pointer;
+        border-radius: 100vw;
+        transition: 0.5s all ease;
+        svg {
+          pointer-events: none;
+        }
+      }
+      .mainfuncsDiv {
+        @include flex(column, center, center);
+        overflow: hidden;
+        gap: 0.7rem;
+        width: 100%;
+        div {
+          @include flex(row, center, center);
+          transition: 0.7s all ease;
+          cursor: pointer;
+        }
+        input {
+          display: none;
+        }
+      }
+    }
+  }
+  .urlInput {
+    @include flex(row, center, center);
+    border: 1px solid black;
+    padding: 0.2rem 0.2rem;
+    gap: 0.5rem;
+    max-width: 15rem;
+    width: 100%;
+    background-color: white;
+    transform: translateX(100vw);
+    transition: 0.7s all ease;
+    z-index: 99;
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-family: $ff-p;
+    }
+    svg {
+      cursor: pointer;
+      stroke: black;
+    }
+  }
+  .iframe {
+    border: none;
+    outline: none;
+  }
+}
+
+.genreSelectDiv {
+  @include flex(column, center, center);
+  width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.95);
+  top: 0;
+  padding: 0.7rem;
+
+  .genreSelect {
+    @include flex(row, flex-start, flex-start);
+    max-width: 65rem;
+    height: max-content;
+    width: 100%;
+    padding: 6rem 1rem;
+    background-color: white;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.252);
+    border-radius: 0.9rem;
+    gap: 3rem;
+    position: relative;
+
+    @media (max-width: 50em) {
+      flex-direction: column;
+      padding: 2rem 0.85rem;
+      .Preview {
+        width: 100%;
+      }
+    }
+
+    .Preview {
+      @include flex(column, center, flex-start);
+      flex-grow: 1;
+      flex-basis: 0;
+      padding: 0 1rem;
+      gap: 2rem;
+      .thumb {
+        width: 100%;
+        height: 100%;
+      }
+      p {
+        font-family: $ff-p;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 500;
+      }
+      .fileInput {
+        @include flex(column, center, center);
+        width: 100%;
+        height: 12rem;
+        background-color: $clr-off;
+        p {
+          pointer-events: none;
+          font-size: 0.85rem;
+          font-weight: 500;
+          max-width: 35ch;
+        }
+      }
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-family: $ff-p;
+        font-weight: 700;
+        border-bottom: 1px solid black;
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.447);
+        }
+      }
+    }
+    .genres {
+      @include flex(column, center, flex-start);
+      flex-grow: 1;
+      flex-basis: 0;
+      gap: 1rem;
+      padding: 0 1rem;
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-family: $ff-p;
+      }
+      p {
+        font-family: $ff-s;
+        font-size: 0.95rem;
+      }
+      .geenreInput {
+        @include flex(row, flex-start, center);
+        flex-wrap: wrap;
+        background-color: $clr-off;
+        padding: 0.5rem;
+        font-family: $ff-p;
+        font-size: 0.85rem;
+        border: 1px solid rgba(0, 0, 0, 0.293);
+        gap: 0.5rem;
+        width: 100%;
+        span {
+          @include flex(row, center, center);
+          color: rgba(0, 0, 0, 0.599);
+          border-radius: 0.5rem;
+          background-color: white;
+          padding: 0.5rem;
+          word-break: break-word;
+          .cross {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+          }
+        }
+        input {
+          border: 1px solid black;
+          outline: none;
+          max-width: 7rem;
+          padding: 0.2rem;
+        }
+      }
+    }
+  }
+}
+
+//  blog
+.blogMain {
+  max-width: 750px;
+  width: 100%;
+  margin: auto;
+  padding: 3rem 2rem;
+  @media (max-width: 50em) {
+    padding: 2rem 1rem;
+  }
+  @media (max-width: 40em) {
+    padding: 1rem 0.5rem;
+  }
+  .blog {
+    @include flex(column, flex-start, flex-start);
+    gap: 3rem;
+    width: 100%;
+    .topSec {
+      @include flex(column, flex-start, flex-start);
+      gap: 0.9rem;
+      width: 100%;
+      h1 {
+        font-family: $ff-p;
+        font-size: 2.4rem;
+        width: 100%;
+        font-weight: 700;
+        color: RGB(36, 36, 36);
+      }
+      p {
+        font-family: $ff-p;
+        font-size: 1.35rem;
+        font-weight: 500;
+        width: 100%;
+        color: rgba(107, 107, 107, 1);
+        word-break: break-word;
+      }
+      @media (max-width: 50em) {
+        h1 {
+          font-size: 2rem;
+        }
+        p {
+          font-size: 1.5rem;
+        }
+      }
+      @media (max-width: 40em) {
+        h1 {
+          font-size: 1rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .userDeatilsBlog {
+        @include flex(row, center, center);
+        gap: 1rem;
+        img {
+          border-radius: 100vw;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+        .userDetailsRight {
+          @include flex(column, center, center);
+
+          div {
+            @include flex(row, flex-start, center);
+            gap: 1rem;
+            width: 100%;
+            font-family: $ff-p;
+            font-size: 0.95rem;
+            p {
+              font-size: 1rem;
+              font-weight: 400;
+              color: black;
+            }
+            span {
+              &:nth-child(2) {
+                color: green;
+                cursor: pointer;
+                font-weight: 500;
+              }
+              &:nth-child(1) {
+                font-weight: 100;
+                font-size: 0.75rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    .l_c {
+      @include flex(row, flex-start, center);
+      gap: 1rem;
+      width: 100%;
+      div {
+        @include flex(row, flex-start, center);
+        font-family: $ff-p;
+        cursor: pointer;
+        svg {
+          pointer-events: none;
+        }
+      }
+    }
+    .blogCodeMain {
+      @include flex(column, center, center);
+      gap: 1.5rem;
+      .thumbnail {
+        max-width: 10rem;
+        width: 100%;
+      }
+      width: 100%;
+      .blogCode {
+        .titleDiv {
+          @include flex(row, flex-start, flex-start);
+          width: 100%;
+          span {
+            color: rgba(0, 0, 0, 0.516);
+            position: absolute;
+            pointer-events: none;
+            font-family: $ff-s;
+            font-size: 3.5rem;
+            line-height: 3.5rem;
+          }
+        }
+        .storyDiv {
+          @include flex(column, flex-start, center);
+          width: 100%;
+          gap: 1rem;
+          position: relative;
+
+          span {
+            color: rgba(0, 0, 0, 0.516);
+            position: absolute;
+            pointer-events: none;
+            font-family: $ff-s;
+            font-size: 1.5rem;
+            left: 0;
+          }
+          div {
+            width: 100%;
+            font-family: $ff-s;
+            font-size: 1.3rem;
+          }
+        }
+        .title {
+          font-size: 3.5rem;
+          font-family: $ff-s;
+          width: 100%;
+          border: none;
+          outline: none;
+          line-height: 3.5rem;
+          position: relative;
+          cursor: text;
+          word-break: break-word;
+        }
+        .story {
+          width: 100%;
+          border: none;
+          outline: none;
+          font-family: $ff-s;
+          font-size: 1.3rem;
+          position: relative;
+          cursor: text;
+          word-break: break-word;
+        }
+      }
+    }
+  }
+}
+
+.commentDialogMain {
+  position: absolute;
+  min-height: 100vh;
+  max-width: 100vw;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.163);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .commentDialog {
+    @include flex(column, flex-start, flex-start);
+    gap: 1rem;
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    min-height: 100vh;
+    max-width: 25rem;
+    width: 100%;
+    background-color: white;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.252);
+    padding: 1rem;
+    .commentTop {
+      @include flex(row, space-between, center);
+      width: 100%;
+      h2 {
+        font-family: $ff-p;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+    }
+    .Mycomment {
+      @include flex(column, flex-start, flex-start);
+      gap: 0.7rem;
+      width: 100%;
+      box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.252);
+      padding: 0.8rem;
+      border-radius: 8px;
+      .mycommentTop {
+        @include flex(row, flex-start, center);
+        gap: 0.5rem;
+        width: 100%;
+        img {
+          border-radius: 100vh;
+        }
+        p {
+          font-family: $ff-p;
+          font-weight: 500;
+          font-size: 0.85rem;
+        }
+      }
+      span {
+        width: 100%;
+        min-height: 5rem;
+        resize: none;
+        border: none;
+        outline: none;
+        font-family: $ff-p;
+        font-weight: 400;
+        font-size: 0.95rem;
+        cursor: text;
+        &:empty::before {
+          content: "What are your thoughts?";
+          color: rgba(0, 0, 0, 0.319);
+        }
+      }
+      .commentBtns {
+        @include flex(column, flex-end, flex-end);
+        width: 100%;
+      }
+    }
+    .allcomments {
+      @include flex(column, flex-start, flex-start);
+      gap: 1rem;
+      width: 100%;
+      .com {
+        @include flex(column, flex-start, flex-start);
+        gap: 0.7rem;
+        width: 100%;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.247);
+        .comtop {
+          @include flex(row, flex-start, center);
+          width: 100%;
+          gap: 0.5rem;
+          font-family: $ff-p;
+          img {
+            border-radius: 100vw;
+          }
+          p {
+            font-size: 1rem;
+            font-weight: 400;
+          }
+          span {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.471);
+          }
+        }
+        h4 {
+          width: 100%;
+          word-break: break-word;
+          font-family: $ff-p;
+          font-weight: 400;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}
+
+.profilepageMain {
+  @include container();
+  padding: 0 0.5rem;
+  .profilepage {
+    @include flex(row, space-between, flex-start);
+    gap: 6rem;
+    font-family: $ff-p;
+    .Prl {
+      @include flex(column, flex-start, flex-start);
+      gap: 1rem;
+    }
+    .leftProfile {
+      @include flex(column, flex-start, flex-start);
+      padding: 3rem 0;
+      flex-grow: 8;
+      flex-basis: 0;
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 500;
+      }
+      .leftProfileBottom {
+        width: 100%;
+      }
+      h3 {
+        padding-top: 1rem;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      @media (max-width: 50em) {
+        h1 {
+          display: none;
+        }
+      }
+      @media (max-width: 40em) {
+        h3 {
+          padding-top: 0.5rem;
+          font-size: 1rem;
+        }
+      }
+    }
+    .rightProfile {
+      @include flex(column, flex-start, flex-start);
+      gap: 1rem;
+      padding: 3rem 2rem;
+      flex-grow: 3;
+      flex-basis: 0;
+      border-left: 1px solid #eeeeee;
+      min-height: 100vh;
+      position: sticky;
+      top: 0;
+      .wrapper {
+        @include flex(column, space-between, flex-start);
+        gap: 1rem;
+      }
+      img {
+        border-radius: 100vw;
+      }
+      h2 {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      p {
+        font-size: 0.95rem;
+        font-weight: 400;
+      }
+      .biotext {
+        font-family: $ff-p;
+        width: 100%;
+        font-weight: 700;
+        margin-top: 1rem;
+      }
+    }
+    @media (max-width: 50em) {
+      gap: 0rem;
+      flex-direction: column-reverse;
+      .rightProfile {
+        @include flex(row, space-between, center);
+        padding: 1rem 0.3rem;
+        position: relative;
+        top: 0;
+        width: 100%;
+        min-height: 7rem;
+        h2 {
+          font-size: 2rem;
+          font-weight: 700;
+          @media (max-width: 30em) {
+            font-size: 1.5rem;
+          }
+          @media (max-width: 25em) {
+            font-size: 1.2rem;
+          }
+        }
+        p {
+          font-size: 1rem;
+          font-weight: 400;
+        }
+        .biotext {
+          display: none;
+        }
+        .wrapper {
+          flex-direction: row;
+          gap: 1rem;
+        }
+      }
+      .leftProfile {
+        padding: 1rem 0.5rem;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.aboutDiv {
+  @include flex(column, flex-start, flex-start);
+  gap: 2rem;
+  width: 100%;
+  h4 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .profileImg {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    gap: 1.7rem;
+    img {
+      align-self: center;
+      max-width: 9rem;
+      width: 100%;
+    }
+  }
+  .intrestsdiv {
+    @include flex(column, flex-start, flex-start);
+    gap: 1rem;
+    width: 100%;
+    .intrests {
+      @include flex(row, flex-start, flex-start);
+      flex-wrap: wrap;
+      background-color: $clr-off;
+      padding: 0.5rem;
+      border: 1px solid rgba(0, 0, 0, 0.341);
+      gap: 1rem;
+      width: 100%;
+      span {
+        @include flex(row, flex-start, flex-start);
+        word-break: break-word;
+        gap: 0.2rem;
+        background-color: white;
+        font-weight: 400;
+        padding: 0.4rem 0.6rem;
+        border-radius: 5px;
+        button {
+          border: none;
+          background-color: transparent;
+        }
+      }
+      input {
+        border: 1px solid rgba(0, 0, 0, 0.412);
+        background-color: white;
+        padding: 0.4rem 0.6rem;
+        max-width: 9rem;
+        outline: none;
+      }
+    }
+    .btmIntrests {
+      @include flex(row, flex-start, center);
+      width: 100%;
+    }
+  }
+  .imgEdit {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    gap: 1rem;
+    .insertPhoto {
+      @include flex(row, flex-start, center);
+      gap: 0.5rem;
+      color: green;
+      cursor: pointer;
+      svg {
+        fill: green;
+        border: 1px solid green;
+        padding: 0.2rem;
+        border-radius: 100vw;
+        pointer-events: none;
+      }
+      p {
+        pointer-events: none;
+      }
+    }
+  }
+  .bioDiv {
+    @include flex(column, flex-start, flex-start);
+    gap: 1.7rem;
+    width: 100%;
+    .bio {
+      p {
+        font-weight: 400;
+      }
+    }
+    .editbio {
+      border: 1px solid rgba(0, 0, 0, 0.341);
+      background-color: $clr-off;
+      padding: 0.5rem;
+      outline: none;
+      word-break: break-word;
+    }
+  }
+}
+
+//   Readinglist component
+
+.Rl {
+  @include flex(column, flex-start, flex-start);
+  margin-top: 1.5rem;
+  gap: 0.1rem;
+  p.Rtitle {
+    font-family: $ff-p;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .Rdate {
+    font-size: 0.75rem;
+    font-family: $ff-p;
+    color: #6b6b6b;
+  }
+}
+
+//  dailog
+
+.dN {
+  @include flex(column, flex-start, flex-start);
+  gap: 2rem;
+  padding: 0rem 1rem 1rem;
+  max-width: 15rem;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+  top: 3.3rem;
+  right: 0.8rem;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.368);
+  border-radius: 5px;
+  transition: 0.7s all ease;
+  & > div {
+    @include flex(column, flex-start, flex-start);
+    font-family: $ff-p;
+    width: 100%;
+    ul {
+      width: 100%;
+    }
+    li {
+      @include flex(row, flex-start, center);
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      color: $dul-color;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+    p {
+      &:not(&:nth-child(2)):hover {
+        color: black;
+        cursor: pointer;
+      }
+      font-size: 0.95rem;
+      color: $dul-color;
+    }
+  }
+}
+
+//  Loading main
+
+.lMain {
+  @include flex(column, flex-start, flex-start);
+  width: 100%;
+  min-height: 100vh;
+  .bl {
+    @include flex(row, space-between, center);
+    width: 100%;
+    min-height: 12rem;
+    gap: 1rem;
+    @media (max-width: 40em) {
+      min-height: 10rem;
+    }
+
+    & > div:nth-child(1) {
+      @include flex(column, center, center);
+      flex-grow: 0.7;
+      flex-basis: 0;
+      @media (max-width: 25em) {
+        flex-grow: 0.4;
+        width: 70%;
+      }
+      min-height: 12rem;
+      gap: 1.2rem;
+      @media (max-width: 40em) {
+        min-height: 10rem;
+      }
+      .btl {
+        @include flex(column, flex-start, flex-start);
+        gap: 1rem;
+        width: 100%;
+        div {
+          width: 100%;
+          min-height: 1.2rem;
+          background-color: $back-C;
+          &:nth-child(2) {
+            width: 80%;
+          }
+        }
+      }
+      .topl {
+        @include flex(row, flex-start, center);
+        width: 100%;
+        min-height: 2rem;
+        gap: 1.3rem;
+        & > div:nth-child(1) {
+          background-color: $back-C;
+          height: 1.4rem;
+          width: 1.4rem;
+          border-radius: 100vw;
+        }
+        & > div:nth-child(2) {
+          background-color: $back-C;
+          width: 12rem;
+          height: 0.9rem;
+        }
+      }
+    }
+    & > div:nth-child(2) {
+      @include flex(row, flex-end, flex-end);
+      flex-grow: 0.25;
+      flex-basis: 0;
+      width: 90%;
+      @media (max-width: 25em) {
+        flex-grow: 0.6;
+      }
+      div {
+        max-width: 7.5rem;
+        min-height: 7.5rem;
+        @media (max-width: 32em) {
+          max-width: 5rem;
+          min-height: 5rem;
+        }
+        width: 100%;
+        background-color: $back-C;
+      }
+    }
+  }
+}
+
+//  loading small
+.smLoading {
+  @include flex(column, flex-start, flex-start);
+  gap: 1rem;
+  width: 100%;
+  .lMs {
+    @include flex(column, center, flex-start);
+    min-height: 6rem;
+    width: 100%;
+    gap: 0.8rem;
+    div {
+      background-color: $back-C;
+      position: relative;
+      overflow: hidden;
+    }
+    div:nth-child(1) {
+      width: 45%;
+      height: 1rem;
+    }
+    div:nth-child(2) {
+      width: 80%;
+      height: 0.8rem;
+    }
+    div:nth-child(3) {
+      width: 60%;
+      height: 0.8rem;
+    }
+  }
+}
+
+//  blog loading
+
+.bL {
+  @include flex(column, flex-start, flex-start);
+  min-height: calc(100vh - 42px);
+  width: 100%;
+  gap: 2rem;
+  .top {
+    @include flex(column, flex-start, flex-start);
+    gap: 1.5rem;
+    width: 100%;
+    & > div:nth-child(1) {
+      width: 90%;
+      height: 3.5rem;
+      background-color: $back-C;
+    }
+    & > div:nth-child(2) {
+      @include flex(row, flex-start, center);
+      width: 100%;
+      gap: 1.2rem;
+      & > div:nth-child(1) {
+        height: 4.5rem;
+        width: 4.5rem;
+        border-radius: 100vh;
+        background-color: $back-C;
+      }
+      & > div:nth-child(2) {
+        @include flex(column, center, flex-start);
+        gap: 0.4rem;
+        width: 90%;
+        div {
+          background-color: $back-C;
+          height: 1.4rem;
+        }
+        div:nth-child(1) {
+          width: 50%;
+        }
+        div:nth-child(2) {
+          width: 30%;
+        }
+      }
+    }
+  }
+  .desc {
+    @include flex(column, flex-start, flex-start);
+    gap: 2rem;
+    width: 100%;
+    & > div {
+      @include flex(column, space-around, flex-start);
+      gap: 0.8rem;
+      width: 100%;
+      div {
+        width: 100%;
+        height: 1.8rem;
+        background-color: $back-C;
+      }
+      div:nth-child(1) {
+        width: 100%;
+      }
+      div:nth-child(2) {
+        width: 97%;
+      }
+      div:nth-child(3) {
+        width: 95%;
+      }
+      div:nth-child(4) {
+        width: 80%;
+      }
+    }
+  }
+}
+
+//  History list
+
+.histM {
+  @include flex(column, flex-start, flex-start);
+  max-width: 18rem;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+  top: 4rem;
+  left: 8rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.207);
+  z-index: 99;
+  & > div:nth-child(1) {
+    h3 {
+      font-size: 1rem;
+      font-family: $ff-p;
+      font-weight: 200;
+      letter-spacing: 1.7px;
+      word-spacing: 5px;
+    }
+    border-bottom: 1px solid $B-b;
+    width: 100%;
+    padding: 0.8rem 0.7rem;
+  }
+  & > div:not(:nth-child(1)) {
+    @include flex(column, space-between, center);
+    gap: 1rem;
+    border-bottom: 1px solid $B-b;
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+
+    .histIt {
+      cursor: pointer;
+      width: 100%;
+      @include flex(row, space-between, center);
+      & > div {
+        @include flex(row, flex-start, center);
+        gap: 0.7rem;
+        p {
+          font-family: $ff-p;
+          font-weight: 300;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 35em) {
+    top: 5.7rem;
+    left: 2.3rem;
+  }
+  @media (max-width: 32em) {
+    top: 5.7rem;
+    left: 2.3rem;
+  }
+}
