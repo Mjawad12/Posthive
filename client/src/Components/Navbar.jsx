@@ -197,7 +197,7 @@ export default function Navbar(props) {
                   onKeyDown={(e) => {
                     if (e.target.value !== "") {
                       if (e.key === "Enter") {
-                        historyM(e);
+                        historyM(e.target.value);
                         navigate(`/search?q=${e.target.value}`);
                       }
                     }
@@ -236,7 +236,7 @@ export default function Navbar(props) {
                     onKeyDown={(e) => {
                       if (e.target.value !== "") {
                         if (e.key === "Enter") {
-                          historyM(e);
+                          historyM(e.target.value);
                           navigate(`/search?q=${e.target.value}`);
                         }
                       }

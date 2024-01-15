@@ -18,10 +18,10 @@ export default function DRS({ hist, sethist }) {
     <div className="histM in_r">
       <div className="in_r">
         <h3 className="in_r">
-          {hist.length > 0 ? "Recent Searches" : "No Recent Searches"}
+          {hist?.length > 0 ? "Recent Searches" : "No Recent Searches"}
         </h3>
       </div>
-      {hist.length > 0 && (
+      {hist?.length > 0 && (
         <div className="in_r">
           {hist &&
             hist.slice(0, 6).map((it, index) => {

@@ -309,9 +309,7 @@ export default function Mainstate(props) {
       });
       const parsedData = await data.json();
       if (parsedData.success === "success") {
-        const user = Userdetails;
-        user.profileImg = newImg;
-        setUserdetails(user);
+        Userdetails.profileImg = newImg;
       }
     };
 
