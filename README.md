@@ -1,8 +1,6 @@
 # Post Hive
 
-<div style="background-color: white; padding: 20px; text-align: center; width:full;">
-  <img src="client/public/logo.jpg" alt="Post Hive Logo" width="200">
-</div>
+![Post Hive Logo](client/public/log.jpg)
 
 
 Post Hive is a full-stack blogging platform that provides a comprehensive experience for both content creators and readers. It is built using HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. The platform includes various features to enhance user engagement and interaction.
