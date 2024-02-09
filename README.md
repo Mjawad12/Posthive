@@ -1,5 +1,9 @@
 # Post Hive
-![Post Hive Logo](client/public/logoph.png)
+
+<div style="background-color: white; padding: 20px; text-align: center; width:full;">
+  <img src="client/public/logoph.png" alt="Post Hive Logo" width="200">
+</div>
+
 
 Post Hive is a full-stack blogging platform that provides a comprehensive experience for both content creators and readers. It is built using HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. The platform includes various features to enhance user engagement and interaction.
 
@@ -23,6 +27,11 @@ Post Hive is a full-stack blogging platform that provides a comprehensive experi
 - Node.js
 - Express
 - MongoDB
+
+## Live Link
+
+[Live Demo](https://posthive-phi.vercel.app/)
+
 
 ## Getting Started
 
