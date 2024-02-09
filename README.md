@@ -1,7 +1,7 @@
 # Post Hive
 
 <div style="background-color: white; padding: 20px; text-align: center; width:full;">
-  <img src="client/public/logoph.png" alt="Post Hive Logo" width="200">
+  <img src="client/public/logo.jpg" alt="Post Hive Logo" width="200">
 </div>
 
 
