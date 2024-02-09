@@ -10,6 +10,7 @@ Post Hive is a full-stack blogging platform that provides a comprehensive experi
 - **Blog Management:** Create, edit, and publish engaging blog posts.
 - **User Profiles:** Visit other user profiles to discover more content.
 - **Search System:** Effortlessly find blogs and users with the search functionality.
+- **Comments:** Users can add comments on blogs expressing their thoughts. 
 - **Follow/Unfollow System:** Stay connected with your favorite content creators.
 - **User Authentication:** Secure user accounts and profiles.
 - **Google Login:** Simplify the login process with Google authentication.
