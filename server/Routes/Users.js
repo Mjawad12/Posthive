@@ -96,7 +96,7 @@ router.post(
       maxAge: 15 * 24 * 60 * 60 * 1000,
       secure: true, // Make this true in production with HTTPS
       sameSite: "lax",
-      domain: "posthive-phi.vercel.app", // Remove protocol (http/https), only domain is required
+      domain: ".vercel.app", // Remove protocol (http/https), only domain is required
       path: "/", // Ensure the cookie is accessible from all paths
     });
     res.status(200).send({ authtoken: Authtoken });
