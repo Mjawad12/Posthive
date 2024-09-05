@@ -5,13 +5,15 @@ const cors = require("cors");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
-app.use(cors({ origin: "https://posthive-phi.vercel.app", credentials: true }));
+app.use(
+  cors({ origin: "https://posthive-odiswlmm.b4a.run", credentials: true })
+);
 app.use(express.json());
 
 app.use("/users", require("./Routes/Users"));
 app.use("/posts", require("./Routes/Posts"));
 app.get("/check-auth", (req, res) => {
-  const token = req.headers.cookie.split("=")[1];
+  const token = req.headers.cookie ? req.headers.cookie.split("=")[1] : false;
 
   if (!token) {
     console.log(token);
