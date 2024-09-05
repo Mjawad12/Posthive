@@ -5,9 +5,7 @@ const cors = require("cors");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
-app.use(
-  cors({ origin: "https://posthive-odiswlmm.b4a.run", credentials: true })
-);
+app.use(cors({ origin: "https://posthive-phi.vercel.app", credentials: true }));
 app.use(express.json());
 
 app.use("/users", require("./Routes/Users"));
