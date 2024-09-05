@@ -17,9 +17,8 @@ export default function Mainstate(props) {
   const [Done, setDone] = useState(false);
   const [searchResult, setsearchResult] = useState(null);
 
-  const [authtoken, setauthtoken] = useState(
-    localStorage.getItem("authtoken") || null
-  );
+  const [authtoken, setauthtoken] = useState(false);
+  const [authorizeLoading, setauthorizeLoading] = useState(true);
   const url = process.env.REACT_APP_BACK_END;
 
   const attempts = async (func) => {
@@ -546,12 +545,34 @@ export default function Mainstate(props) {
     setotherUserData(null);
   };
 
+  const authorizationCheck = async () => {
+    fetch(url + "/check-auth", {
+      method: "GET",
+      credentials: "include", // important to send cookies with the request
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.authenticated) {
+          // User is authenticated
+          setauthtoken(true);
+        } else {
+          // User is not authenticated
+          setauthtoken(false);
+        }
+        setauthorizeLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    authorizationCheck();
+  }, []);
+
   useEffect(() => {
     if (authtoken) {
       userData();
       getReadingList();
     } // eslint-disable-next-line
-  }, []);
+  }, [authtoken]);
 
   useEffect(() => {
     const mancode = document.querySelector(".blogCode");
@@ -613,6 +634,8 @@ export default function Mainstate(props) {
         signout,
         getSearchResults,
         searchResult,
+        authorizeLoading,
+        setauthorizeLoading,
       }}
     >
       {props.elements}

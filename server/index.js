@@ -3,12 +3,31 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
+const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "https://posthive-phi.vercel.app", credentials: true }));
 app.use(express.json());
 
 app.use("/users", require("./Routes/Users"));
 app.use("/posts", require("./Routes/Posts"));
+app.get("/check-auth", (req, res) => {
+  const token = req.headers.cookie.split("=")[1];
+
+  if (!token) {
+    console.log(token);
+    return res.status(401).json({ authenticated: false });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET);
+    console.log(decoded);
+    return res
+      .status(200)
+      .json({ authenticated: true, userId: decoded.userId });
+  } catch (error) {
+    return res.status(401).json({ authenticated: false });
+  }
+});
 
 const Connection = async () => {
   try {
