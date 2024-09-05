@@ -5,7 +5,6 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const authenticate = async (req, res, next) => {
   try {
-    console.log(!req.headers.cookie);
     if (!req.headers.cookie) {
       throw new Error("Not Authenticated");
     }
