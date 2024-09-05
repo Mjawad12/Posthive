@@ -48,7 +48,7 @@ router.post(
       const otp = (Math.random() * 9000 + 1000).toFixed(0);
       res.status(200).send({ otp: otp });
     } else {
-      const Authtoken = jwt.sign(user.id, process.env.Secret);
+      const Authtoken = jwt.sign(user.id, process.env.SECRET);
       res.cookie("_session_cookie", Authtoken, {
         httpOnly: true,
         maxAge: 15 * 24 * 60 * 60 * 1000,
@@ -90,7 +90,7 @@ router.post(
       const otp = (Math.random() * 9000 + 1000).toFixed(0);
       return res.status(200).send({ otp: otp });
     }
-    const Authtoken = jwt.sign(user.id, process.env.Secret);
+    const Authtoken = jwt.sign(user.id, process.env.SECRET);
     res.cookie("_session_cookie", Authtoken, {
       httpOnly: true,
       maxAge: 15 * 24 * 60 * 60 * 1000,
@@ -109,7 +109,7 @@ router.post("/verified", async (req, res) => {
       { email: req.body.email },
       { $set: { verification: true } }
     );
-    const Authtoken = await jwt.sign(user.id, process.env.Secret);
+    const Authtoken = await jwt.sign(user.id, process.env.SECRET);
     if (Authtoken) {
       res.send({ authtoken: Authtoken });
     } else {

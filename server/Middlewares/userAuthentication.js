@@ -10,7 +10,7 @@ const authenticate = async (req, res, next) => {
     }
     const authtoken = req.headers.cookie.split("=")[1];
     if (authtoken) {
-      const id = await jwt.verify(authtoken, process.env.Secret);
+      const id = await jwt.verify(authtoken, process.env.SECRET);
       if (id !== undefined) {
         req.id = id;
         next();

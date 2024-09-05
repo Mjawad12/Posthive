@@ -12,10 +12,9 @@ app.use("/posts", require("./Routes/Posts"));
 
 const Connection = async () => {
   try {
-    mongoose.connect(process.env.ConnectionString, {
+    mongoose.connect(process.env.CONNECTIONSTRING, {
       connectTimeoutMS: 50000,
     });
-    console.log(process.env.ConnectionString);
   } catch (error) {
     console.log(error.message);
     process.exit(1);
