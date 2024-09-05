@@ -49,6 +49,14 @@ router.post(
       res.status(200).send({ otp: otp });
     } else {
       const Authtoken = jwt.sign(user.id, process.env.Secret);
+      res.cookie("_session_cookie", Authtoken, {
+        httpOnly: true,
+        maxAge: 15 * 24 * 60 * 60 * 1000,
+        secure: true, // Make this true in production with HTTPS
+        sameSite: "lax",
+        domain: "localhost", // Remove protocol (http/https), only domain is required
+        path: "/", // Ensure the cookie is accessible from all paths
+      });
       res.status(200).send({ authtoken: Authtoken });
     }
   }
@@ -83,6 +91,14 @@ router.post(
       return res.status(200).send({ otp: otp });
     }
     const Authtoken = jwt.sign(user.id, process.env.Secret);
+    res.cookie("_session_cookie", Authtoken, {
+      httpOnly: true,
+      maxAge: 15 * 24 * 60 * 60 * 1000,
+      secure: true, // Make this true in production with HTTPS
+      sameSite: "lax",
+      domain: "localhost", // Remove protocol (http/https), only domain is required
+      path: "/", // Ensure the cookie is accessible from all paths
+    });
     res.status(200).send({ authtoken: Authtoken });
   }
 );
@@ -210,6 +226,7 @@ router.post("/addfollowing", getUserId, async (req, res) => {
       res.status(400).send("Bad rquest");
     });
 });
+
 router.delete("/removeFollowing", getUserId, async (req, res) => {
   const userid = req.id;
   await User.findOneAndUpdate(
@@ -233,6 +250,7 @@ router.delete("/removeFollowing", getUserId, async (req, res) => {
       res.status(400).send("Bad Request");
     });
 });
+
 router.post("/changeBio", getUserId, async (req, res) => {
   const userid = req.id;
   const addedbio = await User.findOneAndUpdate(
@@ -273,6 +291,7 @@ router.post("/addReadingList", getUserId, async (req, res) => {
     res.status(200).send("Reading added");
   }
 });
+
 router.get("/getReadingList", getUserId, async (req, res) => {
   const readinglist = await readingList.findOne({ userid: req.id });
   readinglist

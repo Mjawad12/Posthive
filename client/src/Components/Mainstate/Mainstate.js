@@ -56,7 +56,6 @@ export default function Mainstate(props) {
         setOtp(parsedData.otp);
       } else {
         setauthtoken(parsedData.authtoken);
-        localStorage.setItem("authtoken", parsedData.authtoken);
         userData();
         getReadingList();
         getuserstofollow();
@@ -69,6 +68,7 @@ export default function Mainstate(props) {
     const func = async () => {
       const data = await fetch(`${url}/users/signin`, {
         method: "Post",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
@@ -79,7 +79,6 @@ export default function Mainstate(props) {
         setOtp(parsedData.otp);
       } else {
         setauthtoken(parsedData.authtoken);
-        localStorage.setItem("authtoken", parsedData.authtoken);
         userData();
         getReadingList();
         getuserstofollow();
@@ -102,13 +101,14 @@ export default function Mainstate(props) {
     };
     attempts(func);
   };
+
   const userData = async () => {
     const func = async () => {
       const data = await fetch(`${url}/users/getUserData`, {
+        credentials: "include",
         method: "Post",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parsedData = await data.json();
@@ -122,9 +122,9 @@ export default function Mainstate(props) {
     const func = async () => {
       await fetch(`${url}/posts/addpost`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           content,
@@ -145,9 +145,9 @@ export default function Mainstate(props) {
     const func = async () => {
       const data = await fetch(`${url}/posts/allPosts`, {
         method: "Get",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
           index: index,
         },
       });
@@ -168,9 +168,9 @@ export default function Mainstate(props) {
     const func = async () => {
       const data = await fetch(`${url}/posts/getblogContent`, {
         method: "Get",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
           id: blogContentId,
         },
       });
@@ -180,13 +180,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const getuserstofollow = async () => {
     const func = async () => {
       const data = await fetch(`${url}/users/getuserstofollow`, {
         method: "Get",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parsedData = await data.json();
@@ -215,9 +216,9 @@ export default function Mainstate(props) {
       setblogContent(null);
       const data = await fetch(`${url}/posts/getBlog/${id}`, {
         method: "Get",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parsedBlog = await data.json();
@@ -231,9 +232,9 @@ export default function Mainstate(props) {
     const func = async () => {
       await fetch(`${url}/posts/commentpost/${id}`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           username: Userdetails.name,
@@ -247,14 +248,15 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const userPosts = async (id) => {
     const func = async () => {
       setuserpostsData(null);
       const posts = await fetch(`${url}/posts/userPosts/${id}`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parsedposts = await posts.json();
@@ -264,14 +266,15 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const getotherUserData = async (id) => {
     const func = async () => {
       setotherUserData(null);
       const user = await fetch(`${url}/users/getotherUserData/${id}`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parseduser = await user.json();
@@ -280,6 +283,7 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const intrestpostsFunc = async (intrest) => {
     const func = async () => {
       setintrestPost(null);
@@ -297,13 +301,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const changeProfileImg = async (newImg) => {
     const func = async () => {
       const data = await fetch(`${url}/users/changeProfileImg`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({ newImg: newImg }),
       });
@@ -315,13 +320,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const changeIntrests = async (newIntrests) => {
     const func = async () => {
       const data = await fetch(`${url}/users/changeIntrests`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({ intrestes: newIntrests }),
       });
@@ -335,13 +341,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const addFollwer = async (id, othername, otherprofilImg) => {
     const func = async () => {
       await fetch(`${url}/users/addfollower`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           followername: Userdetails.name,
@@ -363,13 +370,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const removeFollowing = async (id) => {
     const func = async () => {
       await fetch(`${url}/users/removeFollowing`, {
         method: "Delete",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           followingId: id,
@@ -391,9 +399,9 @@ export default function Mainstate(props) {
     const func = async () => {
       await fetch(`${url}/users/addfollowing`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           followingname: othername ? othername : otherUserData.name,
@@ -407,13 +415,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const changeBio = async (bio) => {
     const func = async () => {
       await fetch(`${url}/users/changeBio`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           bio: bio,
@@ -423,6 +432,7 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const addReadingList = async (
     posterId,
     posterImg,
@@ -436,9 +446,9 @@ export default function Mainstate(props) {
     const func = async () => {
       await fetch(`${url}/users/addReadingList`, {
         method: "Post",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           posterId,
@@ -467,13 +477,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const getReadingList = async () => {
     const func = async () => {
       const data = await fetch(`${url}/users/getReadingList`, {
         method: "GET",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parsedData = await data.json();
@@ -482,13 +493,14 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const remove = async (postId) => {
     const func = async () => {
       await fetch(`${url}/users/removeRead`, {
         method: "Delete",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
         body: JSON.stringify({
           postId,
@@ -507,14 +519,15 @@ export default function Mainstate(props) {
 
     attempts(func);
   };
+
   const getSearchResults = async (query) => {
     const func = async () => {
       setsearchResult(null);
       const data = await fetch(`${url}/posts/searchResult/${query}`, {
         method: "Get",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
-          authtoken: localStorage.getItem("authtoken"),
         },
       });
       const parsedData = await data.json();
@@ -539,6 +552,7 @@ export default function Mainstate(props) {
       getReadingList();
     } // eslint-disable-next-line
   }, []);
+
   useEffect(() => {
     const mancode = document.querySelector(".blogCode");
     if (mancode) {
