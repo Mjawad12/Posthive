@@ -536,8 +536,11 @@ export default function Mainstate(props) {
     attempts(func);
   };
 
-  const signout = () => {
-    localStorage.removeItem("authtoken");
+  const signout = async () => {
+    await fetch(url + "/logout", {
+      method: "Post",
+      credentials: "include",
+    });
     setauthtoken(null);
     setreadingList(null);
     setUserdetails(null);

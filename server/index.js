@@ -28,6 +28,17 @@ app.get("/check-auth", (req, res) => {
     return res.status(200).json({ authenticated: false });
   }
 });
+app.post("/logout", (req, res) => {
+  res.cookie("_session_cookie", "", {
+    maxAge: 0, // Expire the cookie immediately
+    httpOnly: true,
+    secure: true, // Ensure this matches the original cookie settings
+    sameSite: "None",
+    path: "/", // Ensure the path matches the original cookie settings
+  });
+
+  res.status(200).json({ message: "Logged out successfully" });
+});
 
 const Connection = async () => {
   try {

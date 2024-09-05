@@ -56,7 +56,7 @@ router.post(
         sameSite: "None",
         path: "/", // Ensure the cookie is accessible from all paths
       });
-      res.status(200).send({ authtoken: Authtoken });
+      res.status(200).send({ authtoken: true });
     }
   }
 );
@@ -97,7 +97,7 @@ router.post(
       sameSite: "None",
       path: "/", // Ensure the cookie is accessible from all paths
     });
-    res.status(200).send({ authtoken: Authtoken });
+    res.status(200).send({ authtoken: true });
   }
 );
 
